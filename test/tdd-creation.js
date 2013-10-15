@@ -22,7 +22,10 @@ describe('backbone-mocha generator : tdd', function () {
         ], ['temp']);
         this.model.options.ui = 'tdd'
         this.model.run({}, function () {
-            helpers.assertFiles(['test/models/temp-test.js']);
+            helpers.assertFiles([
+                ['test/models/temp-test.js',
+                /suite\(\'Temp Model\'/]
+            ]);
             done();
         });
     });
@@ -33,7 +36,10 @@ describe('backbone-mocha generator : tdd', function () {
         ], ['temp']);
         this.collection.options.ui = 'tdd'
         this.collection.run({}, function () {
-            helpers.assertFiles(['test/collections/temp-test.js']);
+            helpers.assertFiles([
+                ['test/collections/temp-test.js',
+                    /suite\(\'Temp Collection\'/]
+                ]);
             done();
         });
     })
