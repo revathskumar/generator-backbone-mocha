@@ -12,9 +12,8 @@ var BackboneMochaGenerator = module.exports = function (args, options, config) {
 util.inherits(BackboneMochaGenerator, scriptBase);
 
 BackboneMochaGenerator.prototype.createModel = function createModel() {
-  var ext = '.js';
-  var destFile = path.join('test/collections', this.name + '-test' + ext);
-  this.template('collection' + ext, destFile);
+  var destFile = path.join('test/collections', this.name + '-test' + this.ext);
+  this.template(this.options.ui + '/collection' + this.ext, destFile);
   this.addScriptToIndex('collections/' + this.name);
 };
 

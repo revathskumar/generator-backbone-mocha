@@ -7,6 +7,12 @@ var backboneUtils = require('./util.js');
 var BackboneMochaGenerator = module.exports = function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
 
+  this.option('ui', {
+    desc: 'Choose your style of DSL (bdd, tdd, qunit, or exports)',
+    type: String,
+    defaults: 'bdd'
+  });
+
   if (typeof this.env.options.testPath === 'undefined') {
     try {
       this.env.options.testPath = require(path.join(process.cwd(), 'bower.json')).appPath;
@@ -20,11 +26,16 @@ var BackboneMochaGenerator = module.exports = function Generator() {
     // attempt to detect if user is using CS or not
     // if cml arg provided, use that; else look for the existence of cs
     if (!this.options.coffee &&
-      this.expandFiles(path.join(this.env.options.appPath, '/scripts/**/*.coffee'), {}).length > 0) {
+      this.expandFiles(path.join(this.env.options.testPath, '**/*.coffee'), {}).length > 0) {
       this.options.coffee = true;
     }
 
     this.env.options.coffee = this.options.coffee;
+  }
+
+  this.ext = '.js';
+  if(this.env.options.coffee){
+    this.ext = '.coffee';
   }
 
   this.sourceRoot(path.join(__dirname, 'templates'));
