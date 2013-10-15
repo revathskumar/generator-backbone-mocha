@@ -5,7 +5,7 @@ var path    = require('path');
 var helpers = require('yeoman-generator').test;
 
 
-describe('backbone-mocha generator : tdd', function () {
+describe('backbone-mocha generator : BDD', function () {
     beforeEach(function (done) {
         helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
             if (err) {
@@ -20,7 +20,7 @@ describe('backbone-mocha generator : tdd', function () {
         this.model = helpers.createGenerator('backbone-mocha:model', [
             '../../model'
         ], ['temp']);
-        this.model.options.ui = 'tdd'
+        this.model.options.ui = 'bdd'
         this.model.run({}, function () {
             helpers.assertFiles(['test/models/temp-test.js']);
             done();
@@ -31,7 +31,7 @@ describe('backbone-mocha generator : tdd', function () {
         this.collection = helpers.createGenerator('backbone-mocha:collection', [
             '../../collection'
         ], ['temp']);
-        this.collection.options.ui = 'tdd'
+        this.collection.options.ui = 'bdd'
         this.collection.run({}, function () {
             helpers.assertFiles(['test/collections/temp-test.js']);
             done();
