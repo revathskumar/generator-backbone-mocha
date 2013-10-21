@@ -23,7 +23,7 @@ describe('backbone-mocha generator : BDD', function () {
         this.model.options.ui = 'bdd'
         this.model.run({}, function () {
             helpers.assertFiles([
-                ['test/models/temp-test.js',
+                ['test/models/temp.spec.js',
                 /describe\(\'Temp Model\'/]
             ]);
             done();
@@ -37,10 +37,38 @@ describe('backbone-mocha generator : BDD', function () {
         this.collection.options.ui = 'bdd'
         this.collection.run({}, function () {
             helpers.assertFiles([
-                ['test/collections/temp-test.js',
+                ['test/collections/temp.spec.js',
                 /describe\(\'Temp Collection\'/]
             ]);
             done();
         });
-    })
+    });
+
+    it('creates view', function(done){
+        this.view = helpers.createGenerator('backbone-mocha:view', [
+            '../../view'
+        ], ['temp']);
+        this.view.options.ui = 'bdd'
+        this.view.run({}, function () {
+            helpers.assertFiles([
+                ['test/views/temp.spec.js',
+                /describe\(\'Temp View\'/]
+            ]);
+            done();
+        });
+    });
+
+    it('creates router', function(done){
+        this.router = helpers.createGenerator('backbone-mocha:router', [
+            '../../router'
+        ], ['temp']);
+        this.router.options.ui = 'bdd'
+        this.router.run({}, function () {
+            helpers.assertFiles([
+                ['test/routers/temp.spec.js',
+                /describe\(\'Temp Router\'/]
+            ]);
+            done();
+        });
+    });
 });

@@ -38,6 +38,11 @@ var BackboneMochaGenerator = module.exports = function Generator() {
     this.ext = '.coffee';
   }
 
+  this.specExt = '-test';
+  if(this.options.ui === 'bdd'){
+    this.specExt = '.spec';
+  }
+
   this.sourceRoot(path.join(__dirname, 'templates'));
 };
 
@@ -60,3 +65,7 @@ BackboneMochaGenerator.prototype.addScriptToIndex = function (script) {
     console.log('\nUnable to find '.yellow + fullPath + '. Reference to '.yellow + script + '.js ' + 'not added.\n'.yellow);
   }
 };
+
+BackboneMochaGenerator.prototype.fileName = function(){
+  return this.name + this.specExt + this.ext;
+}
