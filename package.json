@@ -21,7 +21,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "git@github.com:yeoman/generator.git"
+    "yeoman-generator": "https://github.com/yeoman/generator/tarball/master"
   },
   "devDependencies": {
     "mocha": "~1.12.0"
