@@ -7,12 +7,26 @@ var BackboneMochaGenerator = module.exports = function (args, options, config) {
   scriptBase.apply(this, arguments);
 
   this.mkdir('test/views');
+
+  this.destFile = path.join('test/views', this.fileName());
 };
 
 util.inherits(BackboneMochaGenerator, scriptBase);
 
 BackboneMochaGenerator.prototype.createView = function createModel() {
-  var destFile = path.join('test/views', this.fileName());
-  this.template(this.options.ui + '/view' + this.ext, destFile);
+  if (this.options.coffee) {
+    return;
+  }
+
+  this.template(this.options.ui + '/view' + this.ext, this.destFile);
+  this.addScriptToIndex('views/' + this.name);
+};
+
+BackboneMochaGenerator.prototype.createViewCoffee = function createViewCoffee() {
+  if (!this.options.coffee) {
+    return;
+  }
+
+  this.template('coffee-' + this.options.ui + '/view' + this.ext, this.destFile);
   this.addScriptToIndex('views/' + this.name);
 };

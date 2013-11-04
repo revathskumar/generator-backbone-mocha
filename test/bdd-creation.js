@@ -20,7 +20,7 @@ describe('backbone-mocha generator : BDD', function () {
         this.model = helpers.createGenerator('backbone-mocha:model', [
             '../../model'
         ], ['temp']);
-        this.model.options.ui = 'bdd'
+        this.model.options.ui = 'bdd';
         this.model.run({}, function () {
             helpers.assertFiles([
                 ['test/models/temp.spec.js',
@@ -34,7 +34,7 @@ describe('backbone-mocha generator : BDD', function () {
         this.collection = helpers.createGenerator('backbone-mocha:collection', [
             '../../collection'
         ], ['temp']);
-        this.collection.options.ui = 'bdd'
+        this.collection.options.ui = 'bdd';
         this.collection.run({}, function () {
             helpers.assertFiles([
                 ['test/collections/temp.spec.js',
