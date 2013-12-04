@@ -3,7 +3,7 @@
 
 var path    = require('path');
 var helpers = require('yeoman-generator').test;
-
+var fs      = require('fs');
 
 describe('backbone-mocha generator : tdd', function () {
   beforeEach(function (done) {

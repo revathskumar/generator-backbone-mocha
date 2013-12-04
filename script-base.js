@@ -34,12 +34,12 @@ var BackboneMochaGenerator = module.exports = function Generator() {
   }
 
   this.ext = '.js';
-  if(this.env.options.coffee){
+  if (this.env.options.coffee) {
     this.ext = '.coffee';
   }
 
   this.specExt = '-test';
-  if(this.options.ui === 'bdd'){
+  if (this.options.ui === 'bdd') {
     this.specExt = '.spec';
   }
 
@@ -62,10 +62,10 @@ BackboneMochaGenerator.prototype.addScriptToIndex = function (script) {
       ]
     });
   } catch (e) {
-    console.log('\nUnable to find '.yellow + fullPath + '. Reference to '.yellow + script + '.js ' + 'not added.\n'.yellow);
+    console.log('\nUnable to find ' + fullPath + '. Reference to ' + script + '.js ' + 'not added.\n');
   }
 };
 
-BackboneMochaGenerator.prototype.fileName = function(){
+BackboneMochaGenerator.prototype.fileName = function() {
   return this.name + this.specExt + this.ext;
-}
+};
