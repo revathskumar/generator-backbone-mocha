@@ -1,4 +1,4 @@
-# global describe, beforeEach, assert, it
+# global beforeEach, describe, it, assert, expect
 
 'use strict';
 suite '<%= _.classify(name) %> View', ->
