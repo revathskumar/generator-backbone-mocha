@@ -2,6 +2,12 @@
 var path = require('path');
 var fs = require('fs');
 
+module.exports = {
+  rewrite: rewrite,
+  rewriteFile: rewriteFile,
+  classify: classify
+};
+
 function rewriteFile(args) {
   args.path = args.path || process.cwd();
   var fullPath = path.join(args.path, args.file);
@@ -32,7 +38,7 @@ function rewrite(args) {
   var otherwiseLineIndex = 0;
   lines.forEach(function (line, i) {
     if (line.indexOf(args.needle) !== -1) {
-      otherwiseLineIndex = i;
+      otherwiseLineIndex = i + 1;
     }
   });
 
@@ -54,7 +60,9 @@ function rewrite(args) {
   return lines.join('\n');
 }
 
-module.exports = {
-  rewrite: rewrite,
-  rewriteFile: rewriteFile
-};
+// _.classify uses _.titleize which lowercase the string,
+// so if the user chooses a proper ClassName it will not rename properly
+function classify(string) {
+	string = string.replace(/[\W_](\w)/g, function (match) { return ' ' + match[1].toUpperCase(); }).replace(/\s/g, '');
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}

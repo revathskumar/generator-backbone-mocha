@@ -7,6 +7,12 @@ var backboneUtils = require('./util.js');
 var BackboneMochaGenerator = module.exports = function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
 
+  try {
+    this.appname = require(path.join(process.cwd(), '.yo-rc.json'))['generator-backbone'].appName;
+  } catch (e) {
+    this.appname = path.basename(process.cwd());
+  }
+
   this.option('ui', {
     desc: 'Choose your style of DSL (bdd, tdd, qunit, or exports)',
     type: String,
@@ -44,6 +50,8 @@ var BackboneMochaGenerator = module.exports = function Generator() {
   }
 
   this.sourceRoot(path.join(__dirname, 'templates'));
+
+  this._.mixin({ 'classify': backboneUtils.classify });
 };
 
 util.inherits(BackboneMochaGenerator, yeoman.generators.NamedBase);
@@ -56,9 +64,17 @@ BackboneMochaGenerator.prototype.addScriptToIndex = function (script) {
 
     backboneUtils.rewriteFile({
       file: fullPath,
+      needle: '<!-- include source files here... -->',
+      splicable: [
+        '<script src="scripts/' + script + '.js"></script>'
+      ]
+    });
+
+    backboneUtils.rewriteFile({
+      file: fullPath,
       needle: '<!-- include spec files here... -->',
       splicable: [
-        '<script src="test/' + script + '.js"></script>'
+        '<script src="spec/' + script + '.spec.js"></script>'
       ]
     });
   } catch (e) {

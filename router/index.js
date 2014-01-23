@@ -5,9 +5,9 @@ var scriptBase = require('../script-base');
 
 var BackboneMochaGenerator = module.exports = function (args, options, config) {
   scriptBase.apply(this, arguments);
-  this.mkdir('test/routers');
+  this.mkdir('test/spec/routers');
 
-  this.destFile = path.join(this.env.options.testPath, 'routers', this.fileName());
+  this.destFile = path.join(this.env.options.testPath, 'spec/routers', this.fileName());
 };
 
 util.inherits(BackboneMochaGenerator, scriptBase);
