@@ -44,6 +44,8 @@ var BackboneMochaGenerator = module.exports = function Generator() {
   }
 
   this.sourceRoot(path.join(__dirname, 'templates'));
+
+  this._.mixin({ 'classify': backboneUtils.classify });
 };
 
 util.inherits(BackboneMochaGenerator, yeoman.generators.NamedBase);
