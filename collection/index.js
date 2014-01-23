@@ -6,14 +6,14 @@ var scriptBase = require('../script-base');
 var BackboneMochaGenerator = module.exports = function (args, options, config) {
   scriptBase.apply(this, arguments);
 
-  this.mkdir('test/collections');
-  this.destFile = path.join('test/collections', this.fileName());
+  this.mkdir('test/spec/collections');
+  this.destFile = path.join(this.env.options.testPath, 'spec/collections', this.fileName());
 };
 
 util.inherits(BackboneMochaGenerator, scriptBase);
 
-BackboneMochaGenerator.prototype.createCollection = function createModel() {
-  if(this.options.coffee){
+BackboneMochaGenerator.prototype.createCollection = function createCollection() {
+  if (this.options.coffee) {
     return;
   }
 
@@ -22,7 +22,7 @@ BackboneMochaGenerator.prototype.createCollection = function createModel() {
 };
 
 BackboneMochaGenerator.prototype.createCollectionCoffee = function createCollectionCoffee() {
-  if(!this.options.coffee){
+  if (!this.options.coffee) {
     return;
   }
 

@@ -58,7 +58,7 @@ BackboneMochaGenerator.prototype.addScriptToIndex = function (script) {
       file: fullPath,
       needle: '<!-- include spec files here... -->',
       splicable: [
-        '<script src="test/' + script + '.js"></script>'
+        '<script src="spec/' + script + '.spec.js"></script>'
       ]
     });
   } catch (e) {
