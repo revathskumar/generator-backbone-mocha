@@ -38,7 +38,7 @@ function rewrite(args) {
   var otherwiseLineIndex = 0;
   lines.forEach(function (line, i) {
     if (line.indexOf(args.needle) !== -1) {
-      otherwiseLineIndex = i;
+      otherwiseLineIndex = i + 1;
     }
   });
 

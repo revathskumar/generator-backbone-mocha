@@ -58,6 +58,14 @@ BackboneMochaGenerator.prototype.addScriptToIndex = function (script) {
 
     backboneUtils.rewriteFile({
       file: fullPath,
+      needle: '<!-- include source files here... -->',
+      splicable: [
+        '<script src="scripts/' + script + '.js"></script>'
+      ]
+    });
+
+    backboneUtils.rewriteFile({
+      file: fullPath,
       needle: '<!-- include spec files here... -->',
       splicable: [
         '<script src="spec/' + script + '.spec.js"></script>'
