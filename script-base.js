@@ -7,6 +7,12 @@ var backboneUtils = require('./util.js');
 var BackboneMochaGenerator = module.exports = function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
 
+  try {
+    this.appname = require(path.join(process.cwd(), '.yo-rc.json'))['generator-backbone'].appName;
+  } catch (e) {
+    this.appname = path.basename(process.cwd());
+  }
+
   this.option('ui', {
     desc: 'Choose your style of DSL (bdd, tdd, qunit, or exports)',
     type: String,
