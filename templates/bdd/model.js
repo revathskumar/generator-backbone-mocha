@@ -4,7 +4,7 @@
 describe('<%= _.classify(name) %> Model', function () {
 
     beforeEach(function () {
-        this.<%= _.classify(name) %> = new <%= _.camelize(appname) %>.Models.<%= _.classify(name) %>Model();
+        this.<%= _.classify(name) %>Model = new <%= _.camelize(appname) %>.Models.<%= _.classify(name) %>();
     });
 
 });

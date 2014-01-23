@@ -3,4 +3,4 @@
 
 describe '<%= _.classify(name) %> Model', ->
   beforeEach ->
-    @<%= _.classify(name) %> = new <%= _.camelize(appname) %>.Models.<%= _.classify(name) %>Model();
+    @<%= _.classify(name) %>Model = new <%= _.camelize(appname) %>.Models.<%= _.classify(name) %>();

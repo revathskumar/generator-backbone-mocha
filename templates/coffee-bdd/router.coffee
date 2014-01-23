@@ -3,7 +3,7 @@
 
 describe '<%= _.classify(name) %> Router', ->
   beforeEach ->
-    @<%= _.classify(name) %> = new <%= _.camelize(appname) %>.Routers.<%= _.classify(name) %>Router();
+    @<%= _.classify(name) %>Router = new <%= _.camelize(appname) %>.Routers.<%= _.classify(name) %>();
 
   it 'index route', ->
 

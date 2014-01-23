@@ -4,7 +4,7 @@
 describe('<%= _.classify(name) %> Router', function () {
 
     beforeEach(function () {
-        this.<%= _.classify(name) %> = new <%= _.camelize(appname) %>.Routers.<%= _.classify(name) %>Router();
+        this.<%= _.classify(name) %>Router = new <%= _.camelize(appname) %>.Routers.<%= _.classify(name) %>();
     });
 
     it('index route', function(){

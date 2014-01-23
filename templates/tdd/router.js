@@ -4,7 +4,7 @@
 suite('<%= _.classify(name) %> Router', function () {
 
     setup(function () {
-        this.<%= _.classify(name) %> = new <%= _.camelize(appname) %>.Routers.<%= _.classify(name) %>Router();
+        this.<%= _.classify(name) %>Router = new <%= _.camelize(appname) %>.Routers.<%= _.classify(name) %>();
     });
 
 });
