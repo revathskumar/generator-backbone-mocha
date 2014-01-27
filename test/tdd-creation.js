@@ -22,7 +22,7 @@ describe('backbone-mocha generator : tdd', function () {
       ], ['temp'], {ui: 'tdd'});
     this.model.run({}, function () {
       helpers.assertFiles([
-        ['test/models/temp-test.js',
+        ['test/spec/models/temp-test.js',
         /suite\(\'Temp Model\'/]
       ]);
       done();
@@ -35,7 +35,7 @@ describe('backbone-mocha generator : tdd', function () {
       ], ['temp'], {ui: 'tdd'});
     this.collection.run({}, function () {
       helpers.assertFiles([
-        ['test/collections/temp-test.js',
+        ['test/spec/collections/temp-test.js',
         /suite\(\'Temp Collection\'/]
       ]);
       done();
@@ -49,7 +49,7 @@ describe('backbone-mocha generator : tdd', function () {
 
     this.view.run({}, function () {
       helpers.assertFiles([
-        ['test/views/temp-test.js',
+        ['test/spec/views/temp-test.js',
         /suite\(\'Temp View\'/]
       ]);
       done();
@@ -63,7 +63,7 @@ describe('backbone-mocha generator : tdd', function () {
 
     this.router.run({}, function () {
       helpers.assertFiles([
-        ['test/routers/temp-test.js',
+        ['test/spec/routers/temp-test.js',
         /suite\(\'Temp Router\'/]
       ]);
       done();

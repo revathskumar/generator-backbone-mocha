@@ -22,7 +22,7 @@ describe('backbone-mocha generator : BDD : CoffeeScript', function () {
 
     this.model.run({}, function () {
       helpers.assertFiles([
-        ['test/models/temp.spec.coffee',
+        ['test/spec/models/temp.spec.coffee',
         /describe \'Temp Model\', ->/]
       ]);
       done();
@@ -36,7 +36,7 @@ describe('backbone-mocha generator : BDD : CoffeeScript', function () {
 
     this.collection.run({}, function () {
       helpers.assertFiles([
-        ['test/collections/temp.spec.coffee',
+        ['test/spec/collections/temp.spec.coffee',
           /describe \'Temp Collection\', ->/]
       ]);
       done();
@@ -50,7 +50,7 @@ describe('backbone-mocha generator : BDD : CoffeeScript', function () {
 
     this.view.run({}, function () {
       helpers.assertFiles([
-        ['test/views/temp.spec.coffee',
+        ['test/spec/views/temp.spec.coffee',
         /describe \'Temp View\', ->/]
       ]);
       done();
@@ -64,7 +64,7 @@ describe('backbone-mocha generator : BDD : CoffeeScript', function () {
 
     this.router.run({}, function () {
       helpers.assertFiles([
-        ['test/routers/temp.spec.coffee',
+        ['test/spec/routers/temp.spec.coffee',
         /describe \'Temp Router\', ->/]
       ]);
       done();
