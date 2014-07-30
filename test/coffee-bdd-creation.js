@@ -1,27 +1,13 @@
-/*global describe, beforeEach, it*/
+/*global describe, it*/
 'use strict';
-
-var path    = require('path');
-var helpers = require('yeoman-generator').test;
+var yeoman = require('yeoman-generator');
+var assert  = yeoman.assert;
+var test = require('./helpers');
 
 describe('backbone-mocha generator : BDD : CoffeeScript', function () {
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-      if (err) {
-        return done(err);
-      }
-
-      done();
-    }.bind(this));
-  });
-
   it('creates model', function (done) {
-    this.model = helpers.createGenerator('backbone-mocha:model', [
-      '../../model'
-    ], ['temp'], {ui: 'bdd', coffee: true});
-
-    this.model.run({}, function () {
-      helpers.assertFiles([
+    test.runner('model', {ui: 'bdd', coffee: true}, function () {
+      assert.fileContent([
         ['test/models/temp.spec.coffee',
         /describe \'Temp Model\', ->/]
       ]);
@@ -30,12 +16,8 @@ describe('backbone-mocha generator : BDD : CoffeeScript', function () {
   });
 
   it('creates collection', function (done) {
-    this.collection = helpers.createGenerator('backbone-mocha:collection', [
-      '../../collection'
-    ], ['temp'], {ui: 'bdd', coffee: true});
-
-    this.collection.run({}, function () {
-      helpers.assertFiles([
+    test.runner('collection', {ui: 'bdd', coffee: true}, function () {
+      assert.fileContent([
         ['test/collections/temp.spec.coffee',
           /describe \'Temp Collection\', ->/]
       ]);
@@ -44,12 +26,8 @@ describe('backbone-mocha generator : BDD : CoffeeScript', function () {
   });
 
   it('creates view', function (done) {
-    this.view = helpers.createGenerator('backbone-mocha:view', [
-      '../../view'
-    ], ['temp'], {ui: 'bdd', coffee: true});
-
-    this.view.run({}, function () {
-      helpers.assertFiles([
+    test.runner('view', {ui: 'bdd', coffee: true}, function () {
+      assert.fileContent([
         ['test/views/temp.spec.coffee',
         /describe \'Temp View\', ->/]
       ]);
@@ -58,12 +36,8 @@ describe('backbone-mocha generator : BDD : CoffeeScript', function () {
   });
 
   it('creates router', function (done) {
-    this.router = helpers.createGenerator('backbone-mocha:router', [
-      '../../router'
-    ], ['temp'], {ui: 'bdd', coffee: true});
-
-    this.router.run({}, function () {
-      helpers.assertFiles([
+    test.runner('router', {ui: 'bdd', coffee: true}, function () {
+      assert.fileContent([
         ['test/routers/temp.spec.coffee',
         /describe \'Temp Router\', ->/]
       ]);
