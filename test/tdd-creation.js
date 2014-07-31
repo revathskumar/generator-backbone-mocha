@@ -1,27 +1,14 @@
-/*global describe, beforeEach, it*/
+/*global describe, it*/
 'use strict';
-
-var path    = require('path');
-var helpers = require('yeoman-generator').test;
+var yeoman = require('yeoman-generator');
+var assert  = yeoman.assert;
+var test = require('./helpers');
 
 
 describe('backbone-mocha generator : tdd', function () {
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-      if (err) {
-        return done(err);
-      }
-
-      done();
-    }.bind(this));
-  });
-
   it('creates model', function (done) {
-    this.model = helpers.createGenerator('backbone-mocha:model', [
-      '../../model'
-      ], ['temp'], {ui: 'tdd'});
-    this.model.run({}, function () {
-      helpers.assertFiles([
+    test.runner('model', {ui: 'tdd'}, function () {
+      assert.fileContent([
         ['test/models/temp-test.js',
         /suite\(\'Temp Model\'/]
       ]);
@@ -29,12 +16,9 @@ describe('backbone-mocha generator : tdd', function () {
     });
   });
 
-  it('creates collection', function(done){
-    this.collection = helpers.createGenerator('backbone-mocha:collection', [
-      '../../collection'
-      ], ['temp'], {ui: 'tdd'});
-    this.collection.run({}, function () {
-      helpers.assertFiles([
+  it('creates collection', function (done) {
+    test.runner('collection', {ui: 'tdd'}, function () {
+      assert.fileContent([
         ['test/collections/temp-test.js',
         /suite\(\'Temp Collection\'/]
       ]);
@@ -42,13 +26,9 @@ describe('backbone-mocha generator : tdd', function () {
     });
   });
 
-  it('creates view', function(done){
-    this.view = helpers.createGenerator('backbone-mocha:view', [
-      '../../view'
-      ], ['temp'], {ui: 'tdd'});
-
-    this.view.run({}, function () {
-      helpers.assertFiles([
+  it('creates view', function (done) {
+    test.runner('view', {ui: 'tdd'}, function () {
+      assert.fileContent([
         ['test/views/temp-test.js',
         /suite\(\'Temp View\'/]
       ]);
@@ -56,13 +36,9 @@ describe('backbone-mocha generator : tdd', function () {
     });
   });
 
-  it('creates router', function(done){
-    this.router = helpers.createGenerator('backbone-mocha:router', [
-      '../../router'
-      ], ['temp'], {ui: 'tdd'});
-
-    this.router.run({}, function () {
-      helpers.assertFiles([
+  it('creates router', function (done) {
+    test.runner('router', {ui: 'tdd'}, function () {
+      assert.fileContent([
         ['test/routers/temp-test.js',
         /suite\(\'Temp Router\'/]
       ]);

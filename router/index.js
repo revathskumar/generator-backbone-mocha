@@ -1,31 +1,20 @@
 'use strict';
-var util = require('util');
-var path = require('path');
 var scriptBase = require('../script-base');
 
-var BackboneMochaGenerator = module.exports = function (args, options, config) {
-  scriptBase.apply(this, arguments);
-  this.mkdir('test/routers');
+var BackboneMochaRouterGenerator = scriptBase.extend({
+  constructor: function () {
+    scriptBase.apply(this, arguments);
+  },
 
-  this.destFile = path.join(this.env.options.testPath, 'routers', this.fileName());
-};
+  initializing: function () {
+    this.initialize('routers');
+  },
 
-util.inherits(BackboneMochaGenerator, scriptBase);
-
-BackboneMochaGenerator.prototype.createRouter = function createRouter() {
-  if (this.options.coffee) {
-    return;
+  writing: {
+    createRouter: function () {
+      this.writeTemplate('router');
+    }
   }
+});
 
-  this.template(this.options.ui + '/router' + this.ext, this.destFile);
-  this.addScriptToIndex('routers/' + this.name);
-};
-
-BackboneMochaGenerator.prototype.createRouterCoffee = function createRouterCoffee() {
-  if (!this.options.coffee) {
-    return;
-  }
-
-  this.template('coffee-' + this.options.ui + '/router' + this.ext, this.destFile);
-  this.addScriptToIndex('routers/' + this.name);
-};
+module.exports = BackboneMochaRouterGenerator;

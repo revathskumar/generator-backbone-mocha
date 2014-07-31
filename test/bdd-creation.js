@@ -1,28 +1,13 @@
-/*global describe, beforeEach, it*/
+/*global describe, it*/
 'use strict';
-
-var path    = require('path');
-var helpers = require('yeoman-generator').test;
-
+var yeoman = require('yeoman-generator');
+var assert  = yeoman.assert;
+var test = require('./helpers');
 
 describe('backbone-mocha generator : BDD', function () {
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-      if (err) {
-        return done(err);
-      }
-
-      done();
-    }.bind(this));
-  });
-
   it('creates model', function (done) {
-    this.model = helpers.createGenerator('backbone-mocha:model', [
-      '../../model'
-      ], ['temp']);
-    this.model.options.ui = 'bdd';
-    this.model.run({}, function () {
-      helpers.assertFiles([
+    test.runner('model', {ui: 'bdd'}, function () {
+      assert.fileContent([
         ['test/models/temp.spec.js',
         /describe\(\'Temp Model\'/]
       ]);
@@ -30,13 +15,9 @@ describe('backbone-mocha generator : BDD', function () {
     });
   });
 
-  it('creates collection', function(done){
-    this.collection = helpers.createGenerator('backbone-mocha:collection', [
-      '../../collection'
-      ], ['temp']);
-    this.collection.options.ui = 'bdd';
-    this.collection.run({}, function () {
-      helpers.assertFiles([
+  it('creates collection', function (done) {
+    test.runner('collection', {ui: 'bdd'},  function () {
+      assert.fileContent([
         ['test/collections/temp.spec.js',
         /describe\(\'Temp Collection\'/]
       ]);
@@ -44,13 +25,9 @@ describe('backbone-mocha generator : BDD', function () {
     });
   });
 
-  it('creates view', function(done){
-    this.view = helpers.createGenerator('backbone-mocha:view', [
-      '../../view'
-      ], ['temp']);
-    this.view.options.ui = 'bdd'
-    this.view.run({}, function () {
-      helpers.assertFiles([
+  it('creates view', function (done) {
+    test.runner('view', {ui: 'bdd'}, function () {
+      assert.fileContent([
         ['test/views/temp.spec.js',
         /describe\(\'Temp View\'/]
       ]);
@@ -58,13 +35,9 @@ describe('backbone-mocha generator : BDD', function () {
     });
   });
 
-  it('creates router', function(done){
-    this.router = helpers.createGenerator('backbone-mocha:router', [
-      '../../router'
-      ], ['temp']);
-    this.router.options.ui = 'bdd'
-    this.router.run({}, function () {
-      helpers.assertFiles([
+  it('creates router', function (done) {
+    test.runner('router', {ui: 'bdd'}, function () {
+      assert.fileContent([
         ['test/routers/temp.spec.js',
         /describe\(\'Temp Router\'/]
       ]);
