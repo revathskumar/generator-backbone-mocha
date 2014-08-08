@@ -12,7 +12,7 @@ var BackboneMochaCollectionGenerator = scriptBase.extend({
 
   writing: {
     createCollection: function () {
-      this.writeTemplate('collection');
+      this._writeTemplate('collection');
     }
   }
 });
