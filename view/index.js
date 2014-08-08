@@ -12,7 +12,7 @@ var BackboneMochaViewGenerator  = scriptBase.extend({
 
   writing: {
     createView: function () {
-      this.writeTemplate('view');
+      this._writeTemplate('view');
     }
   }
 });

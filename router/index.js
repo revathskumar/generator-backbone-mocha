@@ -12,7 +12,7 @@ var BackboneMochaRouterGenerator = scriptBase.extend({
 
   writing: {
     createRouter: function () {
-      this.writeTemplate('router');
+      this._writeTemplate('router');
     }
   }
 });

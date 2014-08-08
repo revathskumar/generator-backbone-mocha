@@ -80,7 +80,8 @@ var BackboneMochaGenerator = yeoman.generators.NamedBase.extend({
     this.destFile = path.join('test/'  + type, this.fileName());
   },
 
-  writeTemplate: function (type) {
+  _writeTemplate: function (type) {
+
     var prefix = '';
     if (this.options.coffee) {
       prefix = 'coffee-';

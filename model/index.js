@@ -12,7 +12,7 @@ var BackboneMochaModelGenerator = scriptBase.extend({
 
   writing: {
     createModel: function () {
-      this.writeTemplate('model');
+      this._writeTemplate('model');
     }
   }
 });
