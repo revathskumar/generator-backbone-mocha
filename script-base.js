@@ -87,7 +87,7 @@ var BackboneMochaGenerator = yeoman.generators.NamedBase.extend({
       prefix = 'coffee-';
     }
     this.template(prefix + this.options.ui + '/' + type + this.ext, this.destFile);
-    this.addScriptToIndex(type + 's/' +  this.fileName());
+    this.addScriptToIndex(type + 's/' +  this.name);
   },
 });
 
